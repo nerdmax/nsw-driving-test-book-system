@@ -43,6 +43,7 @@ log4js.configure({
     },
   },
 });
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
