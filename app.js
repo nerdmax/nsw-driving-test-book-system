@@ -22,6 +22,8 @@ const multer = require('multer');
 
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
+const fs = require('fs');
+
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
@@ -228,6 +230,15 @@ app.use(errorHandler());
 app.listen(app.get('port'), () => {
   console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
+
+  // Bind browser-sync to nodemon in gulpfile.js
+  // Nodemon will cause loading forever issues, now change a useless file to trigger browser-sync
+  // This is an ugly way to trigger browser-sync, need to work on that later
+  const stream = fs.createWriteStream('gulpflag.html');
+  stream.once('open', (fd) => {
+    stream.end();
+  });
+  console.log('Triggered gulp');
 });
 
 module.exports = app;
