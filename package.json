@@ -9,7 +9,7 @@
   "author": "Sahat Yalkabov",
   "license": "MIT",
   "scripts": {
-    "start": "node app.js",
+    "start": "gulp auto",
     "test": "mocha --reporter spec",
     "postinstall": "npm rebuild node-sass",
     "eslint": "eslint **/*.js"
@@ -63,11 +63,14 @@
     "validator": "^8.0.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "chai": "^4.1.1",
     "eslint": "^4.4.1",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-chai-friendly": "^0.4.0",
     "eslint-plugin-import": "^2.7.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
     "mocha": "^3.5.0",
     "sinon": "^3.2.1",
     "sinon-mongoose": "^2.0.2",
@@ -101,6 +104,8 @@
       "mocha": true,
       "node": true
     },
-    "plugins": ["chai-friendly"]
+    "plugins": [
+      "chai-friendly"
+    ]
   }
 }
