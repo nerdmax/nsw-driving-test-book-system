@@ -23,6 +23,26 @@ const multer = require('multer');
 const upload = multer({ dest: path.join(__dirname, 'uploads') });
 
 const fs = require('fs');
+const log4js = require('log4js');
+
+log4js.configure({
+  appenders: {
+    book: {
+      type: 'file',
+      filename: 'log/book.log',
+    },
+    test: {
+      type: 'file',
+      filename: 'log/test.log',
+    },
+  },
+  categories: {
+    default: {
+      appenders: ['book'],
+      level: 'trace',
+    },
+  },
+});
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
